@@ -1,5 +1,6 @@
 package com.ts.controller;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ts.model.CreateInvModel;
 import com.ts.service.CreateInvService;
 
-
 @RestController
 @CrossOrigin("*")
 public class CreateInvController {
@@ -26,14 +26,20 @@ public class CreateInvController {
 	@PostMapping("/createInvoice")
 	public ResponseEntity<String> createInvoice(@RequestParam("name") String name, @RequestParam("email") String email,
 			@RequestParam("mobile") String mobile, @RequestParam("address") String address,
-			@RequestParam("dueDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date dueDate,
-			@RequestParam("status") String status, @RequestParam("courseName") String courseName,
-			@RequestParam("dueAmount") Double dueAmount, @RequestParam("totalAmount") Double totalAmount) {
+			@RequestParam("courseName") String courseName,
+			@RequestParam("paymentDate") @DateTimeFormat(pattern = "yyyy-MM-dd") Date paymentDate,
+			@RequestParam("status") String status,
+			@RequestParam(value = "dueDate", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate dueDate,
+			@RequestParam("subAmount") Double subAmount, @RequestParam("paidAmount") Double paidAmount) {
 
-		String invoice = cinvservice.createInvoice(name, email, mobile, address, dueDate, status, courseName, dueAmount,
-				totalAmount);
-		return ResponseEntity.ok(invoice);
+		String invoice = cinvservice.createInvoice(name, email, mobile, address, courseName, paymentDate, status, subAmount, paidAmount, dueDate);
+	    return ResponseEntity.ok(invoice);
 	}
+
+//	@PostMapping("/createInvoice")
+//	public CreateInvModel createInvoice(@RequestBody String name, String email, String mobile){
+//		return 
+//	}
 
 	@GetMapping("/getAllInvoices")
 	public List<CreateInvModel> getAllInvoices(CreateInvModel getAllInvoices) {

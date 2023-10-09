@@ -1,5 +1,6 @@
 package com.ts.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -9,13 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
-@Getter
-@Setter
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -28,13 +29,18 @@ public class CreateInvModel {
 	private String email;
 	private String mobile;
 	private String address;
+	private String courseName;
 	@Temporal(TemporalType.DATE)
 	private Date invoiceDate;
 	@Temporal(TemporalType.DATE)
-	private Date dueDate;
+	private Date paymentDate;
 	private String status;
-	private String courseName;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate dueDate;
+	private double subAmount;
+	private double paidAmount;
 	private double dueAmount;
+	private double taxes;
 	private double totalAmount;
 
 }
