@@ -19,7 +19,7 @@ public class LeadForm {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String leadName;
-	private long mobile;
+	private String mobileNo;
 	private String email;
 	private String qualification;
 	private String collegeName;
@@ -28,9 +28,9 @@ public class LeadForm {
 	private String interest;
 	private String mode;
 	private String approach;
-	private boolean expierience;
+	private String experience;
 	private String status;
-	private boolean courseDone;
+	private String courseDoneFromOtherInstitute;
 	private String remark;
 
 }

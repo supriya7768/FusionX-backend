@@ -36,11 +36,6 @@ public class CreateInvController {
 	    return ResponseEntity.ok(invoice);
 	}
 
-//	@PostMapping("/createInvoice")
-//	public CreateInvModel createInvoice(@RequestBody String name, String email, String mobile){
-//		return 
-//	}
-
 	@GetMapping("/getAllInvoices")
 	public List<CreateInvModel> getAllInvoices(CreateInvModel getAllInvoices) {
 		return cinvservice.getAllInvoices(getAllInvoices);
