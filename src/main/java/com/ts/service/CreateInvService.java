@@ -27,8 +27,21 @@ public class CreateInvService {
 	public String createInvoice(String name, String email, String mobile, String address, String courseName,
 			Date paymentDate, String status, Double subAmount, Double paidAmount, LocalDate dueDate) {
 		CreateInvModel cim = new CreateInvModel();
+		String[] nameWords = name.split(" ");
+		StringBuilder formattedName = new StringBuilder();
 
-		cim.setName(name);
+		for (String word : nameWords) {
+			if (!word.isEmpty()) {
+				if (formattedName.length() > 0) {
+					formattedName.append(" ");
+				}
+				formattedName.append(word.substring(0, 1).toUpperCase());
+				formattedName.append(word.substring(1).toLowerCase());
+			}
+		}
+
+		cim.setName(formattedName.toString());
+//		cim.setName(name);
 		cim.setEmail(email);
 		cim.setMobile(mobile);
 		cim.setAddress(address);
