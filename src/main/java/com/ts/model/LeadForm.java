@@ -14,23 +14,30 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LeadForm {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long userId;
 	private String leadName;
-	private String mobileNo;
 	private String email;
-	private String qualification;
+	private String mobileNo;
+	private String address;
+	private String degree;
+	private String field;
+	private String passingYear;
 	private String collegeName;
-	private int passingYear;
 	private String courseName;
-	private String interest;
 	private String mode;
-	private String approach;
 	private String experience;
-	private String status;
+	private String yearsOfExperience;
+	private String designation;
 	private String courseDoneFromOtherInstitute;
-	private String remark;
-
+	private String instituteName;
+	private String reasonForChanging;
+	private String interest;
+	private String approach;
+	private String referenceName;
+	private String batchCode;
+	private String status;
+	private String reasonPostpone;
 }
