@@ -1,5 +1,7 @@
 package com.ts.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ts.model.LeadForm;
 import com.ts.service.LeadFormService;
 
 @CrossOrigin("*")
@@ -47,5 +50,15 @@ public class LeadFormController {
 			return ResponseEntity.badRequest().body("Email parameter is missing or empty.");
 		}
 	}
+	
+	@GetMapping("/getAllLeads")
+	public List<LeadForm> getAllLeads(LeadForm getAllLeads) {
+		return ls.getAllLeads(getAllLeads);
+	}
+	
+	@GetMapping("search")
+    public List<LeadForm> searchLeads(@RequestParam(value = "data", required = false) String query) {
+        return ls.searchLeads(query);
+    }
 
 }

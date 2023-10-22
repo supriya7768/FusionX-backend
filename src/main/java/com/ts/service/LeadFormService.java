@@ -1,5 +1,6 @@
 package com.ts.service;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -129,6 +130,14 @@ public class LeadFormService {
 			return "Email id is already present";
 		} else
 			return email;
+	}
+
+	public List<LeadForm> getAllLeads(LeadForm getAllLeads) {
+		return lr.findAll();
+	}
+
+	public List<LeadForm> searchLeads(String query) {
+		return lr.searchByCriteria(query);
 	}
 
 }
